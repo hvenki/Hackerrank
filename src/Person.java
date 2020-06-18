@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 import org.omg.CORBA.PUBLIC_MEMBER;
 
-/*
+/*Day4
  * Write a Person class with an instance variable,age , 
  * and a constructor that takes an integer,initialAge , as a parameter. 
  * The constructor must assign initialAge  to age  after confirming the argument 
@@ -20,32 +22,69 @@ public class Person {
 	
 	public Person() {
 	}
+	
 	public Person(int initialAge) {
 		
-		if(initialAge>0) {
-			age = initialAge;
+		
+		if(initialAge<0) {
+			this.age =0;
+			System.out.println("Age is not valid, setting age to 0.");
 		}else {
-			age =0;
+			this.age = initialAge;
 		}
 		}
 
-	public void amIOld(int age) {
-		if(age<13) {
-			System.out.println("You are young..");
+	public void amIOld() {
+		
+		
+		 if(age<13) {
+			System.out.println("You are young.");
 		}else if(age>=13 && age<18){
-			System.out.println("You are a teenager..");
+			System.out.println("You are a teenager.");
 		}else {
-			System.out.println("You are old..");
+			System.out.println("You are old.");
 		}
+		
 	}
 	
 	public void yearPasses() {
 		
-		age +=1;
+		this.age +=1;
+		
+		
+		  if(age<13) { System.out.println("You are young."); }else if(age>=13 &&
+		  age<18){ System.out.println("You are a teenager."); }else {
+		  System.out.println("You are old."); }
+		 
 	}
+	
 	public static void main(String[] args) {
-		Person person = new Person();
-		person.amIOld(19);
+		
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		
+		for (int i = 0; i < T; i++) {
+			int age = sc.nextInt();
+			Person p = new Person(age);
+			//p.amIOld();
+			for (int j = 0; j < 3; j++) {
+				p.yearPasses();
+			}
+			p.amIOld();
+			System.out.println();
+        }
+		sc.close();
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 * Person person = new Person(age); person.amIOld(); person.yearPasses();
+		 */
 
 	}
 
